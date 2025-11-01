@@ -1,0 +1,9 @@
+media
+out
+node_modules
+.cache
+.vscode
+.vscode-test/
+*.vsix
+test/
+!src/test/

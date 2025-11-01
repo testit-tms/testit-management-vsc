@@ -1,0 +1,122 @@
+{
+  "name": "testit-management",
+  "displayName": "Test IT Management",
+  "description": "",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/testit-tms/testit-management-vsc"
+  },
+  "engines": {
+    "vscode": "^1.105.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "views": {
+      "testit-management": [
+        {
+          "id": "testitManagement",
+          "name": "Test IT Management",
+          "icon": "icons/tool_window/toolWindow.svg",
+          "contextualTitle": "Test IT Management"
+        }
+      ]
+    },
+    "commands": [
+      {
+          "command": "testitManagement.refreshEntry",
+          "title": "Refresh Test IT Data",
+          "icon": "$(refresh)"
+      },
+      {
+          "command": "testitManagement.openSettings",
+          "title": "Test IT Settings",
+          "icon": "$(wrench)"
+      },
+      {
+        "command": "testitManagement.copyItem",
+        "title": "Copy"
+      }
+    ],
+    "menus": {
+      "view/title": [
+          {
+              "command": "testitManagement.refreshEntry",
+              "when": "view == testitManagement",
+              "group": "navigation"
+          },
+          {
+              "command": "testitManagement.openSettings",
+              "when": "view == testitManagement",
+              "group": "navigation"
+          }
+      ],
+      "view/item/context": [
+        {
+          "command": "testitManagement.copyItem",
+          "when": "view == testitManagement && viewItem == TestCases || CheckLists || SharedSteps"
+        }
+      ]
+    },
+    "configuration": {
+			"type": "object",
+			"title": "Test IT",
+			"properties": {
+        "testitManagement.url": {
+					"type": "string"
+				},
+        "testitManagement.token": {
+					"type": "string"
+				},
+        "testitManagement.projectId": {
+					"type": "string"
+				},
+        "testitManagement.framework": {
+					"type": "string",
+					"default": "junit",
+					"enum": [
+            "junit",
+            "behave",
+            "nose",
+            "pytest",
+            "robotframework",
+            "mstest",
+            "nunit",
+            "xunit",
+            "specflow",
+            "codeceptjs",
+            "cucumber",
+            "jest",
+            "mocha",
+            "playwright",
+            "testcafe"
+					]
+				}
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "testit-management",
+          "title": "Test IT Management",
+          "icon": "icons/tool_window/toolWindow.svg"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.21",
+    "@types/vscode": "^1.42.0",
+    "typescript": "^3.5.1",
+    "tslint": "^5.12.1",
+    "testit-api-client": "6.3.1",
+    "@types/request": "^2.48.8"
+  }
+}
