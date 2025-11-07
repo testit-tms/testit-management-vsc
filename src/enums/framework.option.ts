@@ -1,0 +1,17 @@
+export enum FrameworkOption {
+    JUNIT = "junit",
+    BEHAVE = "behave",
+    NOSE  = "nose",
+    PYTEST = "pytest",
+    ROBOTFRAMEWORK = "robotframework",
+    MSTEST = "mstest",
+    NUNIT = "nunit",
+    XUNIT = "xunit",
+    SPECFLOW = "specflow",
+    CODECEPTJS = "codeceptjs",
+    CUCUMBER = "cucumber",
+    JEST = "jest",
+    MOCHA = "mocha",
+    PLAYWRIGHT = "playwright",
+    TESTCAFE = "testcafe",
+}
