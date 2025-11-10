@@ -26,14 +26,10 @@ jobs:
       - name: Install dependecies
         run: npm install
       - name: Build Plugin
-        run: npm run compile
-
-      - name: Build Plugin
         run: |
           npm run compile
           npm install vsce
           vsce package
-
       - name: Upload Release Asset
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
