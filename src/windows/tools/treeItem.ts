@@ -1,4 +1,4 @@
-import { join, resolve } from 'path';
+import { join, resolve } from 'node:path';
 import * as vscode from 'vscode';
 
 const basePath = resolve(__dirname, '..', '..', '..', 'icons');

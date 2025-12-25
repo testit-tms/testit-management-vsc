@@ -1,5 +1,5 @@
 export class MochaSnippet {
-    private static CODE_SNIPPET =
+    private static readonly CODE_SNIPPET =
     "    it(\"testName\", function () {\n" +
     "        this.externalId = \"externalId\";\n" +
     "        this.displayName = \"displayName_\";\n" +

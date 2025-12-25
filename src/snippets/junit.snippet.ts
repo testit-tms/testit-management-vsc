@@ -1,5 +1,5 @@
 export class JunitSnippet {
-    private static CODE_SNIPPET =
+    private static readonly CODE_SNIPPET =
     "    @WorkItemIds(\"globalId\")\n" +
     "    @Test\n" +
     "    public void testName() {\n" +

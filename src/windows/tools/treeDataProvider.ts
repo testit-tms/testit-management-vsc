@@ -4,10 +4,13 @@ import { ITmsClient, TmsClient } from '../../clients';
 import { SectionModel } from 'testit-api-client';
 import { TmsConfiguration } from '../../configuration';
 
+type OptinalTreeItem = TreeItem | undefined | null | void;
+
 export class TmsTreeDataProvider implements vscode.TreeDataProvider<TreeItem> {
-    private _onDidChangeTreeData: vscode.EventEmitter<TreeItem | undefined | null | void> = new vscode.EventEmitter<TreeItem | undefined | null | void>();
-    readonly onDidChangeTreeData: vscode.Event<TreeItem | undefined | null | void> = this._onDidChangeTreeData.event;
-    private tmsClient: ITmsClient = new TmsClient(TmsConfiguration.getUrl(), TmsConfiguration.getToken()); 
+    
+    private readonly _onDidChangeTreeData: vscode.EventEmitter<OptinalTreeItem> = new vscode.EventEmitter<OptinalTreeItem>();
+    readonly onDidChangeTreeData: vscode.Event<OptinalTreeItem> = this._onDidChangeTreeData.event;
+    private readonly tmsClient: ITmsClient = new TmsClient(TmsConfiguration.getUrl(), TmsConfiguration.getToken()); 
 
     refresh(): void {
         this._onDidChangeTreeData.fire();

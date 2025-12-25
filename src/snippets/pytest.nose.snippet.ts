@@ -1,5 +1,5 @@
 export class PytestOrNoseSnippet {
-    private static CODE_SNIPPET =
+    private static readonly CODE_SNIPPET =
     "    @testit.externalId(\"externalId\")\n" +
     "    @testit.displayName(\"displayName_\")\n" +
     "    @testit.title(\"title_\")\n" +

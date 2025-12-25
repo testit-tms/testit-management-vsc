@@ -1,5 +1,5 @@
 export class GherkinSnippet {
-    private static CODE_SNIPPET =
+    private static readonly CODE_SNIPPET =
     "    Scenario('testName',\n" +
     "    {\n" +
     "        externalId: 'externalId',\n" +
