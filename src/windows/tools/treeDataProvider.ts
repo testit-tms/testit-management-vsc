@@ -60,14 +60,14 @@ export class TmsTreeDataProvider implements vscode.TreeDataProvider<TreeItem> {
         }
 
         const childItems = element.childFolders ?? [];
-        const workitems = await this.tmsClient.getWorkItemsBySectionId(element.id);
+        const workItems = await this.tmsClient.getWorkItemsBySectionId(element.id);
 
-        return childItems.concat(workitems.map((workitem) => 
+        return childItems.concat(workItems.map((workItem) =>
             new TreeItem(
-                workitem.name,
+                workItem.name,
                 vscode.TreeItemCollapsibleState.None,
-                workitem.entityTypeName,
-                workitem.globalId.toString()
+                workItem.entityTypeName,
+                workItem.globalId.toString()
             )
         ));
     }

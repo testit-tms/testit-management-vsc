@@ -28,7 +28,7 @@ jobs:
       - name: Build Plugin
         run: |
           npm run compile
-          npm install vsce
+          npm install @vscode/vsce
           vsce package
       - name: Upload Release Asset
         env:

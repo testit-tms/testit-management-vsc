@@ -7,14 +7,14 @@ import { ExtOption, FrameworkOption } from '../enums';
 
 
 export class FileUtils {
-    public static getAllFileInfo(dirpath: string): Array<FileInfo> {
-        var infos: Array<FileInfo> = [];
+    public static getAllFileInfo(dirPath: string): Array<FileInfo> {
+        let infos: Array<FileInfo> = [];
         const ext = this.getExt();
 
-        var names = fs.readdirSync(dirpath);
-        
+        const names = fs.readdirSync(dirPath);
+
         for (const name of names) {
-            const filepath = path.join(dirpath, name);
+            const filepath = path.join(dirPath, name);
             const stats = fs.statSync(filepath);
 
             if (!stats.isFile()) {
@@ -44,7 +44,7 @@ export class FileUtils {
             case FrameworkOption.BEHAVE.toString(): return ExtOption.GHERKIN.toString();
             case FrameworkOption.NOSE.toString(): return ExtOption.PYTHON.toString();
             case FrameworkOption.PYTEST.toString(): return ExtOption.PYTHON.toString();
-            case FrameworkOption.ROBOTFRAMEWORK.toString(): ExtOption.ROBOT.toString();
+            case FrameworkOption.ROBOTFRAMEWORK.toString(): return ExtOption.ROBOT.toString();
             case FrameworkOption.JUNIT.toString(): return ExtOption.JAVA.toString();
             case FrameworkOption.MSTEST.toString(): return ExtOption.CSHARP.toString();
             case FrameworkOption.NUNIT.toString(): return ExtOption.CSHARP.toString();
@@ -63,9 +63,9 @@ export class FileUtils {
     private static buildFileInfo(path: string): FileInfo {
         const matchInfos: Array<MatchInfo> = [];
         const replacementInfos: Array<ReplacementInfo> = [];
-        var offsetAdjustment = 0;
+        let offsetAdjustment = 0;
         const content = fs.readFileSync(path, 'utf-8');
-        var newContent = content;
+        let newContent = content;
         const patterns = ParsingAnnotationsUtils.getAllPatterns();
 
         for (const pattern of patterns) {

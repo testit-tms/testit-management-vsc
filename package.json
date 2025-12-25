@@ -2,13 +2,13 @@
   "name": "testit-management",
   "displayName": "Test IT Management",
   "description": "",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/testit-tms/testit-management-vsc"
   },
   "engines": {
-    "vscode": "^1.105.0"
+    "vscode": "^1.60.0"
   },
   "categories": [
     "Other"
@@ -28,14 +28,14 @@
     },
     "commands": [
       {
-          "command": "testitManagement.refreshEntry",
-          "title": "Refresh Test IT Data",
-          "icon": "$(refresh)"
+        "command": "testitManagement.refreshEntry",
+        "title": "Refresh Test IT Data",
+        "icon": "$(refresh)"
       },
       {
-          "command": "testitManagement.openSettings",
-          "title": "Test IT Settings",
-          "icon": "$(wrench)"
+        "command": "testitManagement.openSettings",
+        "title": "Test IT Settings",
+        "icon": "$(wrench)"
       },
       {
         "command": "testitManagement.copyItem",
@@ -44,16 +44,16 @@
     ],
     "menus": {
       "view/title": [
-          {
-              "command": "testitManagement.refreshEntry",
-              "when": "view == testitManagement",
-              "group": "navigation"
-          },
-          {
-              "command": "testitManagement.openSettings",
-              "when": "view == testitManagement",
-              "group": "navigation"
-          }
+        {
+          "command": "testitManagement.refreshEntry",
+          "when": "view == testitManagement",
+          "group": "navigation"
+        },
+        {
+          "command": "testitManagement.openSettings",
+          "when": "view == testitManagement",
+          "group": "navigation"
+        }
       ],
       "view/item/context": [
         {
@@ -63,22 +63,22 @@
       ]
     },
     "configuration": {
-			"type": "object",
-			"title": "Test IT",
-			"properties": {
+      "type": "object",
+      "title": "Test IT",
+      "properties": {
         "testitManagement.url": {
-					"type": "string"
-				},
+          "type": "string"
+        },
         "testitManagement.token": {
-					"type": "string"
-				},
+          "type": "string"
+        },
         "testitManagement.projectId": {
-					"type": "string"
-				},
+          "type": "string"
+        },
         "testitManagement.framework": {
-					"type": "string",
-					"default": "junit",
-					"enum": [
+          "type": "string",
+          "default": "junit",
+          "enum": [
             "junit",
             "behave",
             "nose",
@@ -94,8 +94,8 @@
             "mocha",
             "playwright",
             "testcafe"
-					]
-				}
+          ]
+        }
       }
     },
     "viewsContainers": {
@@ -111,12 +111,14 @@
   "scripts": {
     "compile": "tsc"
   },
+  "dependencies": {
+    "testit-api-client": "^6.5.0"
+  },
   "devDependencies": {
     "@types/node": "^20.2.4",
     "@types/vscode": "^1.42.0",
     "typescript": "^5.9.0",
     "tslint": "^5.12.1",
-    "testit-api-client": "6.3.1",
     "@types/request": "^2.48.8"
   }
 }
