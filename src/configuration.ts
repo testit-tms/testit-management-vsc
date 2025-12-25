@@ -5,7 +5,7 @@ export class TmsConfiguration {
         const url = vscode.workspace.getConfiguration('testitManagement').get<string>('url');
 
         if (!url) {
-            vscode.window.showErrorMessage('Url is not found!');
+            vscode.window.showErrorMessage('Url is not found!').then();
             throw new Error('Url is not found!');
         }
 
@@ -16,7 +16,7 @@ export class TmsConfiguration {
         const projectId = vscode.workspace.getConfiguration('testitManagement').get<string>('projectId');
 
         if (!projectId) {
-            vscode.window.showErrorMessage('Project id is not found!');
+            vscode.window.showErrorMessage('Project id is not found!').then();
             throw new Error('Project id is not found!');
         }
 
@@ -27,7 +27,7 @@ export class TmsConfiguration {
         const token = vscode.workspace.getConfiguration('testitManagement').get<string>('token');
 
         if (!token) {
-            vscode.window.showErrorMessage('Token is not found!');
+            vscode.window.showErrorMessage('Token is not found!').then();
             throw new Error('Token is not found!');
         }
 
@@ -38,7 +38,7 @@ export class TmsConfiguration {
         const framework = vscode.workspace.getConfiguration('testitManagement').get<string>('framework');
 
         if (!framework) {
-            vscode.window.showErrorMessage('Framework is not found!');
+            vscode.window.showErrorMessage('Framework is not found!').then();
             throw new Error('Framework is not found!');
         }
 

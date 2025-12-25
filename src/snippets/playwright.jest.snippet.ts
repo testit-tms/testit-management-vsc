@@ -1,5 +1,5 @@
 export class PlaywrightOrJestSnippet {
-    private static CODE_SNIPPET =
+    private static readonly CODE_SNIPPET =
     "    test('testName', () => {\n" +
     "        testit.externalId('externalId');\n" +
     "        testit.displayName('displayName_');\n" +

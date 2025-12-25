@@ -23,8 +23,8 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.commands.executeCommand('workbench.action.openSettings', '@testit-management')
     );
     vscode.commands.registerCommand('testitManagement.copyItem', (item: TreeItem) => {
-        vscode.env.clipboard.writeText(CodeSnippetUtils.getNewSnippet(item.label, item.id));
-        vscode.window.showInformationMessage(`Copied: "${item.label}"`);
+        vscode.env.clipboard.writeText(CodeSnippetUtils.getNewSnippet(item.label, item.id)).then();
+        vscode.window.showInformationMessage(`Copied: "${item.label}"`).then();
     });
 
     context.subscriptions.push(
@@ -32,4 +32,6 @@ export function activate(context: vscode.ExtensionContext) {
     );
 }
 
-export function deactivate() {}
+export function deactivate() {
+    // empty
+}

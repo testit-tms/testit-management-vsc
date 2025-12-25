@@ -1,5 +1,5 @@
 export class TestCafeSnippet {
-    private static CODE_SNIPPET =
+    private static readonly CODE_SNIPPET =
     "    test.meta({\n" +
     "        externalId: 'externalId',\n" +
     "        displayName: 'displayName_',\n" +

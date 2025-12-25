@@ -1,5 +1,5 @@
 export class MSTestOrNUnitSnippet {
-    private static CODE_SNIPPET =
+    private static readonly CODE_SNIPPET =
     "    [ExternalId(\"externalId\")]\n" +
     "    [DisplayName(\"displayName_\")]\n" +
     "    [Title(\"title_\")]\n" +

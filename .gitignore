@@ -1,5 +1,6 @@
 media
 out
+dist
 node_modules
 .cache
 .vscode
@@ -9,3 +10,4 @@ test/
 !src/test/
 .idea
 package-lock.json
+.scannerwork

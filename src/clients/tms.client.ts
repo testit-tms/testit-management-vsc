@@ -15,9 +15,9 @@ import { ITmsClient } from "./tms.client.type";
 import { handleHttpError } from "./tms.client.handler";
 
 export class TmsClient implements ITmsClient {
-  private projectsApi: ProjectsApi;
-  private projectSectionsApi: ProjectSectionsApi;
-  private workItemsApi: WorkItemsApi;
+  private readonly projectsApi: ProjectsApi;
+  private readonly projectSectionsApi: ProjectSectionsApi;
+  private readonly workItemsApi: WorkItemsApi;
 
   constructor(url: string, token: string) {
     this.projectsApi = this.buildProjectsApi(url, token);
@@ -50,17 +50,6 @@ export class TmsClient implements ITmsClient {
   }
 
   public async getSectionsByProjectId(id: string): Promise<Array<SectionModel>> {
-    return await this.projectSectionsApi
-      .getSectionsByProjectId(id)
-      .then((response) => response.body)
-      .catch((err) => {
-        handleHttpError(err);
-
-        return [];
-      });
-  }
-
-    public async getSectionsByParentSectionId(id: string): Promise<Array<SectionModel>> {
     return await this.projectSectionsApi
       .getSectionsByProjectId(id)
       .then((response) => response.body)

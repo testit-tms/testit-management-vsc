@@ -1,11 +1,11 @@
-import { join, resolve } from 'path';
+import { join, resolve } from 'node:path';
 import * as vscode from 'vscode';
 
 const basePath = resolve(__dirname, '..', '..', '..', 'icons');
 const iconPath = {
-	testcases: join(basePath, 'test_case', 'testCase.svg'),
-	checklists: join(basePath, 'check_list', 'checkList.svg'),
-    sharedsteps: join(basePath, 'shared_step', 'sharedStep.svg'),
+	testCases: join(basePath, 'test_case', 'testCase.svg'),
+	checkLists: join(basePath, 'check_list', 'checkList.svg'),
+    sharedSteps: join(basePath, 'shared_step', 'sharedStep.svg'),
 };
 
 export class TreeItem extends vscode.TreeItem {
@@ -31,11 +31,11 @@ export class TreeItem extends vscode.TreeItem {
             case 'section':
                 return new vscode.ThemeIcon('folder');
             case 'TestCases':
-                return iconPath.testcases;
+                return iconPath.testCases;
             case 'CheckLists':
-                return iconPath.checklists;
+                return iconPath.checkLists;
             case 'SharedSteps':
-                return iconPath.sharedsteps;
+                return iconPath.sharedSteps;
             default:
                 return new vscode.ThemeIcon('file');
         }

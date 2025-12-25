@@ -1,5 +1,5 @@
 export class RobotFrameworkSnippet {
-    private static CODE_SNIPPET =
+    private static readonly CODE_SNIPPET =
     "    testName\n" +
     "        [Tags]  testit.externalID:externalId\n" +
     "        ...     testit.displayName:displayName_\n" +
