@@ -12,3 +12,7 @@ vsc-extension-quickstart.md
 out
 .scannerwork
 node_modules
+.idea
+docs
+.github
+nul

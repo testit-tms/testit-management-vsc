@@ -4,6 +4,11 @@ All notable changes to the "testit-management" extension will be documented in t
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [Unreleased]
+## [0.1.1]
+
+- Fixing build with bundle
+- Fixing small code issues
+
+## [0.1.0]
 
 - Initial release

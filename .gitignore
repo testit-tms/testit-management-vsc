@@ -1,5 +1,6 @@
 media
 out
+dist
 node_modules
 .cache
 .vscode
