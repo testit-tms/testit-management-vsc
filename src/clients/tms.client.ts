@@ -1,6 +1,5 @@
 import {
   ApiClient,
-  ProjectsApi,
   ProjectSectionsApi,
   WorkItemsApi,
   SectionModel,
@@ -11,7 +10,6 @@ import { ITmsClient } from "./tms.client.type";
 import { handleHttpError } from "./tms.client.handler";
 
 export class TmsClient implements ITmsClient {
-  private readonly projectsApi: ProjectsApi;
   private readonly projectSectionsApi: ProjectSectionsApi;
   private readonly workItemsApi: WorkItemsApi;
 
@@ -22,7 +20,6 @@ export class TmsClient implements ITmsClient {
     auth.apiKeyPrefix = "PrivateToken";
     auth.apiKey = token;
 
-    this.projectsApi = new ProjectsApi();
     this.projectSectionsApi = new ProjectSectionsApi();
     this.workItemsApi = new WorkItemsApi();
   }
@@ -30,7 +27,7 @@ export class TmsClient implements ITmsClient {
   public async getSectionsByProjectId(id: string): Promise<Array<SectionModel>> {
     return await this.projectSectionsApi
       .getSectionsByProjectId(id, {} as any)
-      .then((response) => response.body)
+      .then((response) => response)
       .catch((err) => {
         handleHttpError(err);
 
@@ -53,7 +50,7 @@ export class TmsClient implements ITmsClient {
 
     return await this.workItemsApi
       .apiV2WorkItemsSearchPost({workItemSelectApiModel: request} as any)
-      .then((response) => response.body)
+      .then((response) => response)
       .catch((err) => {
         handleHttpError(err);
 
@@ -64,7 +61,7 @@ export class TmsClient implements ITmsClient {
   public async getWorkItemById(id: string): Promise<WorkItemModel|undefined> {
     return await this.workItemsApi
       .getWorkItemById(id, {} as any)
-      .then((response) => response.body)
+      .then((response) => response)
       .catch((err) => {
         handleHttpError(err);
 
