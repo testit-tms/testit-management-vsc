@@ -2,7 +2,7 @@
   "name": "testit-management",
   "displayName": "Test IT Management",
   "description": "",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/testit-tms/testit-management-vsc"
@@ -28,57 +28,87 @@
     },
     "commands": [
       {
-        "command": "testitManagement.refreshEntry",
-        "title": "Refresh Test IT Data",
-        "icon": "$(refresh)"
+          "command": "testitManagement.refreshEntry",
+          "title": "Refresh Test IT Data",
+          "icon": "$(refresh)"
       },
       {
-        "command": "testitManagement.openSettings",
-        "title": "Test IT Settings",
-        "icon": "$(wrench)"
+          "command": "testitManagement.openSettings",
+          "title": "Test IT Settings",
+          "icon": "$(wrench)"
       },
       {
         "command": "testitManagement.copyItem",
         "title": "Copy"
+      },
+      {
+        "command": "testitManagement.replace",
+        "title": "Replace"
+      },
+      {
+        "command": "testitManagement.replaceAll",
+        "title": "Replace All"
+      },
+      {
+        "command": "testitManagement.parsingAllure",
+        "title": "Search Allure Methods",
+        "icon": "icons/search_allure/search_allure_dark.svg"
+      },
+      {
+        "command": "testitManagement.itemClick",
+        "title": "Click"
       }
     ],
     "menus": {
       "view/title": [
-        {
-          "command": "testitManagement.refreshEntry",
-          "when": "view == testitManagement",
-          "group": "navigation"
-        },
-        {
-          "command": "testitManagement.openSettings",
-          "when": "view == testitManagement",
-          "group": "navigation"
-        }
+          {
+              "command": "testitManagement.refreshEntry",
+              "when": "view == testitManagement",
+              "group": "navigation"
+          },
+          {
+              "command": "testitManagement.openSettings",
+              "when": "view == testitManagement",
+              "group": "navigation"
+          },
+          {
+            "command": "testitManagement.parsingAllure",
+            "when": "view == testitManagement",
+            "group": "navigation"
+          }
       ],
       "view/item/context": [
         {
           "command": "testitManagement.copyItem",
           "when": "view == testitManagement && viewItem == TestCases || CheckLists || SharedSteps"
+        },
+        {
+          "command": "testitManagement.replace",
+          "when": "view == testitManagement && viewItem == file"
+        },
+        {
+          "command": "testitManagement.replaceAll",
+          "when": "view == testitManagement && viewItem == folder"
         }
       ]
     },
     "configuration": {
-      "type": "object",
-      "title": "Test IT",
-      "properties": {
+			"type": "object",
+			"title": "Test IT",
+			"properties": {
         "testitManagement.url": {
-          "type": "string"
-        },
+					"type": "string"
+				},
         "testitManagement.token": {
-          "type": "string"
-        },
+					"type": "string"
+				},
         "testitManagement.projectId": {
-          "type": "string"
-        },
+					"type": "string"
+				},
         "testitManagement.framework": {
-          "type": "string",
-          "default": "junit",
-          "enum": [
+					"type": "string",
+					"default": "junit",
+					"enum": [
             "junit",
             "behave",
             "nose",
@@ -94,8 +124,8 @@
             "mocha",
             "playwright",
             "testcafe"
-          ]
-        }
+					]
+				}
       }
     },
     "viewsContainers": {
@@ -118,7 +148,7 @@
     "package": "npm run check-types && node esbuild.js --production"
   },
   "dependencies": {
-    "testit-api-client": "^6.5.0"
+    "testit-api-client": "7.2.0"
   },
   "devDependencies": {
     "@types/node": "^20.2.4",

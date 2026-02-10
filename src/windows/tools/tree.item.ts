@@ -1,11 +1,12 @@
-import { join, resolve } from 'node:path';
+import { join, resolve } from 'path';
 import * as vscode from 'vscode';
+import { FileInfo } from '../../parsers';
 
-const basePath = resolve(__dirname, '..', '..', '..', 'icons');
+const basePath = resolve(__dirname, '..', 'icons');
 const iconPath = {
-	testCases: join(basePath, 'test_case', 'testCase.svg'),
-	checkLists: join(basePath, 'check_list', 'checkList.svg'),
-    sharedSteps: join(basePath, 'shared_step', 'sharedStep.svg'),
+	testcases: join(basePath, 'test_case', 'testCase.svg'),
+	checklists: join(basePath, 'check_list', 'checkList.svg'),
+    sharedsteps: join(basePath, 'shared_step', 'sharedStep.svg'),
 };
 
 export class TreeItem extends vscode.TreeItem {
@@ -14,28 +15,36 @@ export class TreeItem extends vscode.TreeItem {
         public readonly collapsibleState: vscode.TreeItemCollapsibleState,
         public readonly type: string,
         public readonly id: string,
-        public readonly childFolders?: Array<TreeItem>,
+        public readonly children: Array<TreeItem>,
+        public readonly info?: FileInfo
     ) {
         super(label, collapsibleState);
 
         this.id = id;
         this.label = label;
-        this.childFolders = childFolders;
-
+        this.children = children;
         this.iconPath = this.getIcon(type);
         this.contextValue = type;
+        this.command = {
+            command: 'testitManagement.itemClick',
+            title: 'Click',
+            arguments: [this]
+        };
+        this.info = info;
     }
 
     private getIcon(type: string): vscode.ThemeIcon | string {
         switch (type) {
             case 'section':
                 return new vscode.ThemeIcon('folder');
+            case 'folder':
+                return new vscode.ThemeIcon('folder');
             case 'TestCases':
-                return iconPath.testCases;
+                return iconPath.testcases;
             case 'CheckLists':
-                return iconPath.checkLists;
+                return iconPath.checklists;
             case 'SharedSteps':
-                return iconPath.sharedSteps;
+                return iconPath.sharedsteps;
             default:
                 return new vscode.ThemeIcon('file');
         }
