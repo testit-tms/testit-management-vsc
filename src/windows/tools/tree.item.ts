@@ -2,7 +2,7 @@ import { join, resolve } from 'path';
 import * as vscode from 'vscode';
 import { FileInfo } from '../../parsers';
 
-const basePath = resolve(__dirname, '..', '..', '..', 'icons');
+const basePath = resolve(__dirname, '..', 'icons');
 const iconPath = {
 	testcases: join(basePath, 'test_case', 'testCase.svg'),
 	checklists: join(basePath, 'check_list', 'checkList.svg'),
