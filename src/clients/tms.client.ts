@@ -1,15 +1,11 @@
-import { 
+import {
+  ApiClient,
   ProjectsApi,
   ProjectSectionsApi,
   WorkItemsApi,
   SectionModel,
   WorkItemShortApiResult,
   WorkItemModel,
-  ProjectsApiApiKeys,
-  ProjectSectionsApiApiKeys,
-  WorkItemsApiApiKeys,
-  WorkItemFilterApiModel,
-  WorkItemSelectApiModel,
 } from "testit-api-client";
 import { ITmsClient } from "./tms.client.type";
 import { handleHttpError } from "./tms.client.handler";
@@ -20,38 +16,20 @@ export class TmsClient implements ITmsClient {
   private readonly workItemsApi: WorkItemsApi;
 
   constructor(url: string, token: string) {
-    this.projectsApi = this.buildProjectsApi(url, token);
-    this.projectSectionsApi = this.buildProjectSectionsApi(url, token);
-    this.workItemsApi = this.buildWorkItemsApi(url, token);
-  }
+    const defaultClient = ApiClient.instance;
+    defaultClient.basePath = url;
+    const auth = defaultClient.authentications["Bearer or PrivateToken"];
+    auth.apiKeyPrefix = "PrivateToken";
+    auth.apiKey = token;
 
-  private buildProjectsApi(url: string, token: string): ProjectsApi {
-    const projectsApi = new ProjectsApi(url);
-    const projectsApiApiKeys = ProjectsApiApiKeys["Bearer or PrivateToken"];
-    projectsApi.setApiKey(projectsApiApiKeys, `PrivateToken ${token}`);
-
-    return projectsApi;
-  }
-
-  private buildProjectSectionsApi(url: string, token: string): ProjectSectionsApi {
-    const projectSectionsApi = new ProjectSectionsApi(url);
-    const projectSectionsApiApiKeys = ProjectSectionsApiApiKeys["Bearer or PrivateToken"];
-    projectSectionsApi.setApiKey(projectSectionsApiApiKeys, `PrivateToken ${token}`);
-
-    return projectSectionsApi;
-  }
-
-  private buildWorkItemsApi(url: string, token: string): WorkItemsApi {
-    const workItemsApi = new WorkItemsApi(url);
-    const workItemsApiApiKeys = WorkItemsApiApiKeys["Bearer or PrivateToken"];
-    workItemsApi.setApiKey(workItemsApiApiKeys, `PrivateToken ${token}`);
-
-    return workItemsApi;
+    this.projectsApi = new ProjectsApi();
+    this.projectSectionsApi = new ProjectSectionsApi();
+    this.workItemsApi = new WorkItemsApi();
   }
 
   public async getSectionsByProjectId(id: string): Promise<Array<SectionModel>> {
     return await this.projectSectionsApi
-      .getSectionsByProjectId(id)
+      .getSectionsByProjectId(id, {} as any)
       .then((response) => response.body)
       .catch((err) => {
         handleHttpError(err);
@@ -65,16 +43,16 @@ export class TmsClient implements ITmsClient {
       return [];
     }
 
-    const filter: WorkItemFilterApiModel = {
+    const filter = {
       sectionIds: [id],
       isDeleted: false,
     };
-    const request: WorkItemSelectApiModel = {
+    const request = {
       filter: filter
-    }
+    };
 
     return await this.workItemsApi
-      .apiV2WorkItemsSearchPost(undefined, undefined, undefined, undefined, undefined, request)
+      .apiV2WorkItemsSearchPost({workItemSelectApiModel: request} as any)
       .then((response) => response.body)
       .catch((err) => {
         handleHttpError(err);
@@ -85,7 +63,7 @@ export class TmsClient implements ITmsClient {
 
   public async getWorkItemById(id: string): Promise<WorkItemModel|undefined> {
     return await this.workItemsApi
-      .getWorkItemById(id)
+      .getWorkItemById(id, {} as any)
       .then((response) => response.body)
       .catch((err) => {
         handleHttpError(err);
