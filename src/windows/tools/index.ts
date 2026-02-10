@@ -1,2 +1,2 @@
-export * from "./treeDataProvider";
-export * from "./treeItem";
+export * from "./tree.provider";
+export * from "./tree.item";

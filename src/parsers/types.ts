@@ -23,7 +23,5 @@ export class FileInfo {
         public filePath: string,
         public oldContent: string,
         public newContent: string,
-        public matches: Array<MatchInfo>,
-        public replacements: Array<ReplacementInfo>,
     ) {}
 }
