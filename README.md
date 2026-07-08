@@ -12,6 +12,7 @@ project's work items and hierarchies, generate unit tests for selected work item
 
 | Test IT | Plugin Test IT Management |
 |---------|---------------------------|
+| 5.8     | 0.3.0-TMS-5.8             |
 | Cloud   | 0.2.0                     |
 
 ## Download
