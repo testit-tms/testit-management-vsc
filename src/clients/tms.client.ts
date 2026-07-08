@@ -16,7 +16,7 @@ export class TmsClient implements ITmsClient {
   constructor(url: string, token: string) {
     const defaultClient = ApiClient.instance;
     defaultClient.basePath = url;
-    const auth = defaultClient.authentications["Bearer or PrivateToken"];
+    const auth = defaultClient.authentications["PrivateToken"];
     auth.apiKeyPrefix = "PrivateToken";
     auth.apiKey = token;
 

@@ -2,7 +2,7 @@
   "name": "testit-management",
   "displayName": "Test IT Management",
   "description": "",
-  "version": "0.2.0",
+  "version": "0.3.0-TMS-5.8",
   "repository": {
     "type": "git",
     "url": "https://github.com/testit-tms/testit-management-vsc"
@@ -148,7 +148,7 @@
     "package": "npm run check-types && node esbuild.js --production"
   },
   "dependencies": {
-    "testit-api-client": "7.2.0"
+    "testit-api-client": "7.3.1-TMS-5.8"
   },
   "devDependencies": {
     "@types/node": "^20.2.4",
