@@ -4,8 +4,8 @@ import {
   WorkItemsApi,
   SectionModel,
   WorkItemShortApiResult,
-  WorkItemModel,
-} from "testit-api-client";
+  WorkItemApiResult,
+} from "../adaptersapi/index.js";
 import { ITmsClient } from "./tms.client.type";
 import { handleHttpError } from "./tms.client.handler";
 
@@ -16,7 +16,7 @@ export class TmsClient implements ITmsClient {
   constructor(url: string, token: string) {
     const defaultClient = ApiClient.instance;
     defaultClient.basePath = url;
-    const auth = defaultClient.authentications["Bearer or PrivateToken"];
+    const auth = defaultClient.authentications["PrivateToken"];
     auth.apiKeyPrefix = "PrivateToken";
     auth.apiKey = token;
 
@@ -26,9 +26,9 @@ export class TmsClient implements ITmsClient {
 
   public async getSectionsByProjectId(id: string): Promise<Array<SectionModel>> {
     return await this.projectSectionsApi
-      .getSectionsByProjectId(id, {} as any)
-      .then((response) => response)
-      .catch((err) => {
+      .adaptersProjectsProjectIdSectionsGet(id, {} as any)
+      .then((response: Array<SectionModel>) => response)
+      .catch((err: unknown) => {
         handleHttpError(err);
 
         return [];
@@ -49,20 +49,20 @@ export class TmsClient implements ITmsClient {
     };
 
     return await this.workItemsApi
-      .apiV2WorkItemsSearchPost({workItemSelectApiModel: request} as any)
-      .then((response) => response)
-      .catch((err) => {
+      .adaptersWorkItemsSearchPost({workItemSelectApiModel: request} as any)
+      .then((response: Array<WorkItemShortApiResult>) => response)
+      .catch((err: unknown) => {
         handleHttpError(err);
 
         return [];
       });
   }
 
-  public async getWorkItemById(id: string): Promise<WorkItemModel|undefined> {
+  public async getWorkItemById(id: string): Promise<WorkItemApiResult|undefined> {
     return await this.workItemsApi
-      .getWorkItemById(id, {} as any)
-      .then((response) => response)
-      .catch((err) => {
+      .adaptersWorkItemsIdGet(id, {} as any)
+      .then((response: WorkItemApiResult) => response)
+      .catch((err: unknown) => {
         handleHttpError(err);
 
         return undefined;
