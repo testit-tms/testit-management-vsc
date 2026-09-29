@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { ITmsClient, TmsClient } from '../../clients';
-import { SectionModel } from 'testit-api-client';
+import { SectionModel } from '../../adaptersapi/index.js';
 import { TmsConfiguration } from '../../configuration';
 import { FileUtils } from '../../utils';
 import { TreeItem } from './tree.item';
